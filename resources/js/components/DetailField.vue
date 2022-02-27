@@ -38,13 +38,13 @@ export default {
     if (!Array.isArray(valuesArray) || !valuesArray.length) valuesArray = [];
 
     this.original = valuesArray;
-    this.number_of_pages = Math.ceil(valuesArray.length / 20);
+    this.number_of_pages = Math.ceil(valuesArray.length / 15);
     this.loadData();
   },
 
   methods: {
     loadData() {
-      this.theData = this.original.slice(0, this.current_page * 20);
+      this.theData = this.original.slice(0, this.current_page * 15);
     },
 
     more() {
