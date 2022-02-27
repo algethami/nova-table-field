@@ -5,7 +5,7 @@
         :key="`column-${index}`"
         @click="handleColumnFieldFocus(index)"
         class="flex-grow border-l border-50"
-        v-for="(cell, index) in row.cells"
+        v-for="(cell, index) in row"
       >
         <textarea
           :class="{
@@ -18,14 +18,13 @@
           @focus="handleColumnFieldFocus(index)"
           class="font-mono text-sm block min-h-input w-full form-control form-input form-input-row py-4 text-90 min-h-full"
           ref="columnFields"
-          v-model="row.cells[index]"
+          v-model="row[index]"
         />
       </div>
     </div>
 
     <div class="flex justify-center h-11 w-11 absolute" style="right: -50px;" v-if="isEditable && canDelete">
       <button
-        @click="$emit('remove-row', row.id)"
         class="flex appearance-none cursor-pointer text-70 hover:text-danger active:outline-none active:shadow-outline focus:outline-none focus:shadow-outline"
         tabindex="-1"
         title="Delete"
@@ -43,7 +42,7 @@ import autosize from 'autosize';
 export default {
   props: {
     index: Number,
-    row: Object,
+    row: Array,
     disabled: {
       type: Boolean,
       default: false,
